@@ -15,6 +15,12 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
+
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -56,7 +62,7 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_PATH,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +74,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# Template directories
+
+#
+#TEMPLATE_DIRS=( #We were supposed to provide this path but this path will vary on different PCs.
+#                #                'C:\code\tango_with_django_project',
+#                #Hence after making the TEMPLATE_PATH, we will use this only
+#                )
+
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
@@ -101,3 +116,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS=(STATIC_PATH,)
